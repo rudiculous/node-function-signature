@@ -1,0 +1,19 @@
+{
+  "name": "@rdcl/function-signature",
+  "version": "1.0.0",
+  "description": "Gets the signature of a function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudiculous/node-function-signature.git"
+  },
+  "author": "RJ van der Weide <rj@rdcl.nl> (https://rdcl.nl)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rudiculous/node-function-signature/issues"
+  },
+  "homepage": "https://github.com/rudiculous/node-function-signature#readme"
+}
