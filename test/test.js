@@ -4,6 +4,13 @@ var expect = require('chai').expect;
 var getFunctionSignature = require('..');
 
 describe('#getFunctionSignature', function () {
+    it('should return an empty array when passed a function without arguments', function () {
+        var fn = function () {};
+        var result = getFunctionSignature(fn);
+
+        expect(result).to.deep.equal([]);
+    });
+
     it('should return a list of argument names', function () {
         var fn = function (foo, bar, baz) {};
         var result = getFunctionSignature(fn);
@@ -49,6 +56,18 @@ describe('#getFunctionSignature', function () {
         var result = getFunctionSignature(fn);
 
         expect(result).to.deep.equal(['foo', 'baz']);
+    });
+
+    it('should throw a TypeError when passed objects without a toString method', function () {
+        expect(function () {
+            getFunctionSignature(null);
+        }).to.throw(TypeError);
+    });
+
+    it('should return an empty array when passed an invalid object', function () {
+        var result = getFunctionSignature('not a function');
+
+        expect(result).to.deep.equal([]);
     });
 
     if (testDefaultValues()) {
