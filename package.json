@@ -1,10 +1,10 @@
 {
   "name": "@rdcl/function-signature",
-  "version": "1.0.0",
-  "description": "Gets the signature of a function",
+  "version": "1.0.1",
+  "description": "Parses a function to get its parameters.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/rudiculous/node-function-signature/issues"
   },
-  "homepage": "https://github.com/rudiculous/node-function-signature#readme"
+  "homepage": "https://github.com/rudiculous/node-function-signature#readme",
+  "devDependencies": {
+    "chai": "~3.2.*",
+    "mocha": "~2.2.*"
+  }
 }

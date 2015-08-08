@@ -1,23 +1,36 @@
 "use strict";
 
+/**
+ * Parses a function to get its parameters.
+ *
+ * @param {Function} fn The function to parse.
+ * @return {Array} A list of the function arguments.
+ *
+ * @public
+ */
 function getFunctionSignature(fn) {
-    let str = fn.toString();
+    var str = fn.toString();
 
     // Strip comments.
     str = str.replace(/\/\/[^\r\n]*|\/\*[\s\S]*?\*\//g, '');
 
-    let match = str.match(/\(([^)]*)\)/);
+    var match = str.match(/\(([^)]*)\)/);
 
     if (match) {
-        let sig = match[1].split(/\s*,\s*/);
+        var res = match[1];
+
+        // Strip leading and trailing whitespace.
+        res = res.replace(/^\s+|\s+$/g, '');
+
+        var sig = res.split(/\s*,\s*/);
 
         if (sig.length === 1 && !sig[0]) {
             sig.length = 0;
         }
 
-        let signature = [];
+        var signature = [];
 
-        for (let key of sig) {
+        for (var key of sig) {
             // TODO: Handle rest parameters. The position of the rest
             // parameter matters, so this requires some thought. The
             // following signatures are all different:
