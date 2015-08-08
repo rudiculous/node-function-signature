@@ -32,7 +32,7 @@ describe('#getFunctionSignature', function () {
     });
 
     it('should ignore block comments', function () {
-        var fn = function (/* string */ foo) {};
+        var fn = function /* (bar, baz) */ (/* string */ foo) {};
         var result = getFunctionSignature(fn);
 
         expect(result).to.deep.equal(['foo']);
@@ -70,52 +70,17 @@ describe('#getFunctionSignature', function () {
         expect(result).to.deep.equal([]);
     });
 
-    if (testDefaultValues()) {
-        it('should ignore default values (if supported)', function () {
-            eval('var fn = function (foo = 0, bar = 1) {};');
-            var result = getFunctionSignature(fn);
+    it('should ignore default values (if supported)', function () {
+        var fn = 'function (foo = 0, bar = 1) {};';
+        var result = getFunctionSignature(fn);
 
-            expect(result).to.deep.equal(['foo', 'bar']);
-        });
-    }
-    else {
-        it('should ignore default values (if supported)');
-    }
+        expect(result).to.deep.equal(['foo', 'bar']);
+    });
 
-    if (testRestParameters()) {
-        it('should ignore rest parameters (if supported)', function () {
-            eval('var fn = function (foo, ...bar) {};');
-            var result = getFunctionSignature(fn);
+    it('should ignore rest parameters (if supported)', function () {
+        var fn = 'function (foo, ...bar) {};';
+        var result = getFunctionSignature(fn);
 
-            expect(result).to.deep.equal(['foo']);
-        });
-    }
-    else {
-        it('should ignore rest parameters (if supported)');
-    }
+        expect(result).to.deep.equal(['foo']);
+    });
 });
-
-function testDefaultValues() {
-    return _testWithEval('var fn = function (foo = 0, bar = 1) {};');
-}
-
-function testRestParameters() {
-    return _testWithEval('var fn = function (foo, ...bar) {};');
-}
-
-function _testWithEval(str) {
-    try {
-        eval('"use strict";\n' + str);
-
-        return true;
-    }
-    catch (err) {
-        if (err instanceof SyntaxError) {
-            console.log(err);
-            return false;
-        }
-        else {
-            throw err;
-        }
-    }
-}
