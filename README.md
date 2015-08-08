@@ -1,4 +1,7 @@
 # node-function-signature
+
+[![Build Status](https://travis-ci.org/rudiculous/node-function-signature.svg?branch=master)](https://travis-ci.org/rudiculous/node-function-signature)
+
 Parses a function to get its parameters.
 
 ##  Installation
