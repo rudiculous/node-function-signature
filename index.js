@@ -14,7 +14,7 @@ function getFunctionSignature(fn) {
   // Strip comments.
   str = str.replace(/\/\/[^\r\n]*|\/\*[\s\S]*?\*\//g, '')
 
-    var match = str.match(/\(([^)]*)\)/)
+  var match = str.match(/\(([^)]*)\)/)
 
   if (match) {
     var res = match[1]
