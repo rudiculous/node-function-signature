@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/rudiculous/node-function-signature#readme",
   "devDependencies": {
-    "chai": "3.2.*",
-    "coveralls": "2.11.*",
-    "istanbul": "0.3.*",
-    "mocha": "2.3.*"
+    "chai": "^3.2.0",
+    "coveralls": "^2.11.4",
+    "istanbul": "^0.3.19",
+    "mocha": "^2.3.2"
   }
 }
