@@ -9,28 +9,28 @@
  * @public
  */
 function getFunctionSignature(fn) {
-  var str = fn.toString()
+  let str = fn.toString()
 
   // Strip comments.
   str = str.replace(/\/\/[^\r\n]*|\/\*[\s\S]*?\*\//g, '')
 
-  var match = str.match(/\(([^)]*)\)/)
+  const match = str.match(/\(([^)]*)\)/)
 
   if (match) {
-    var res = match[1]
+    let res = match[1]
 
     // Strip leading and trailing whitespace.
     res = res.replace(/^\s+|\s+$/g, '')
 
-    var sig = res.split(/\s*,\s*/)
+    let sig = res.split(/\s*,\s*/)
 
     if (sig.length === 1 && !sig[0]) {
       sig.length = 0
     }
 
-    var signature = []
+    const signature = []
 
-    for (var key of sig) {
+    for (let key of sig) {
       // TODO: Handle rest parameters. The position of the rest
       // parameter matters, so this requires some thought. The
       // following signatures are all different:
